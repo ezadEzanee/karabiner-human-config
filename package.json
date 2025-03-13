@@ -6,7 +6,7 @@
     "elements",
     "karabiner-elements",
     "karabiner",
-    "keyboard-mapping",
+    "keyboardqmapping",
     "keyboard-remapping",
     "keyboard-shortcuts",
     "keyboard",
@@ -38,6 +38,7 @@
     "build": "tsup",
     "cli": "bun run build && node dist/index.js",
     "dev": "tsup --watch",
+    "khc": "node ./dist/index.js -i konfig.json -o karabiner.json",
     "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then npx simple-git-hooks; fi",
     "publish:latest": "NODE_ENV=production changeset publish"
   },

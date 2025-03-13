@@ -8,4 +8,7 @@ export const manipulatorKeys = {
   up: "to_after_key_up",
   d: "to_delayed_action",
   delayed: "to_delayed_action",
+  desc: "description",
+  c: "conditions",
+  af: "after",
 }

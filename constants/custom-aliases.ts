@@ -42,6 +42,12 @@ export const customAliases = {
   // hyper
   hyper: "left_command left_control left_option left_shift",
 
+  // 💡 Add your custom aliases here
+  omnikey: ["right_command", "right_control", "right_option", "right_shift"],
+  omnikey_window: ["tab", "w"],
+  omnikey_focus: ["tab", "f"],
+  omnikey_resize: ["tab", "r"],
+
   // option
   opt: "left_option",
   option: "left_option",

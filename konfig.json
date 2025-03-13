@@ -1,31 +1,163 @@
 {
-  "caps": { "t": "hyper", "a": "100 caps" },
-  "fn": {
-    "_self": { "t": "fn", "a": "cmd tab" }
+  // Modifier keys with tap/hold actions
+  "cmd": {
+    "_self": {
+      "description": "Left Cmd = Cmd+V when pressed alone",
+      "to": "left_command",
+      "to_if_alone": "cmd v"
+    }
   },
-  "rcmd": {
-    "_self": "rcmd",
-    "a": "$ open \"https://github.com/nrjdalal/awesome-templates\"",
-    "c": "$ open \"https://github.com/copilot\"",
-    "g": "$ open \"https://github.com/nrjdalal?tab=repositories\"",
-    "m": "$ open \"https://mail.google.com/mail/u/0/#inbox\"",
-    "s": "$ open \"https://github.com/search?type=repositories&s=stars&o=desc\"",
-    "w": "$ open \"https://web.whatsapp.com\"",
-    "x": "$ open \"https://x.com/home\""
+
+  "opt": {
+    "_self": {
+      "description": "Left Option = Cmd+C when pressed alone",
+      "to": "left_option",
+      "to_if_alone": "cmd c"
+    }
   },
-  "ropt": {
-    "_self": "ropt",
-    "g": "$ open -a \"Google Chrome\"",
-    "q": "$ open -a \"qBittorrent\"",
-    "v": "$ open -a \"Visual Studio Code\""
+
+  "ctrl": {
+    "_self": {
+      "description": "Left Control = Cmd+X when pressed alone",
+      "to": "left_control",
+      "to_if_alone": "cmd x"
+    }
   },
-  "Visual Studio Code": {
-    "fn 1": "cmd shift e",
-    "fn 2": "ctrl shift g",
-    "fn f": "cmd fn f2",
-    "fn q": "cmd b",
-    "fn tab": "cmd shift p",
-    "fn tilde": "ctrl tilde",
-    "fn x": "cmd shift x"
+
+  // Omnikey key triggers
+  "omnikey spacebar": "$ open -a 'Visual Studio Code'",
+  "omnikey s": "$ open -a 'Safari'",
+  "omnikey t": "$ open -a 'iTerm'",
+
+  // Omnikey Layer: Window Mode (tab + w)
+  "tab w": {
+    "_self": {
+      "description": "Omnikey Layers: Window Mode",
+      "t": ["set_variable omnikey_window 1", "notification Omnikey Window On"],
+      "af": ["set_variable omnikey_window 0", "notification ''"]
+    },
+    "h": "$ aerospace move left",
+    "j": "$ aerospace move down",
+    "k": "$ aerospace move up",
+    "l": "$ aerospace move right"
+  },
+
+  // Omnikey Layer: Focus Mode (tab + f)
+  "tab f": {
+    "_self": {
+      "description": "Omnikey Layers: Focus Mode",
+      "t": ["set_variable omnikey_focus 1", "notification Omnikey Focus On"],
+      "af": ["set_variable omnikey_focus 0", "notification ''"]
+    },
+    "h": "$ aerospace focus left",
+    "j": "$ aerospace focus down",
+    "k": "$ aerospace focus up",
+    "l": "$ aerospace focus right"
+  },
+
+  // Omnikey Layer: Resize Mode (tab + r)
+  "tab r": {
+    "_self": {
+      "description": "Omnikey Layers: Resize Mode",
+      "t": ["set_variable omnikey_resize 1", "notification Omnikey Resize On"],
+      "af": ["set_variable omnikey_resize 0", "notification ''"]
+    },
+    "1": "$ aerospace resize width 890",
+    "2": "$ aerospace resize width 990",
+    "3": "$ aerospace resize width 1090",
+    "-": "$ aerospace resize smart -50",
+    "=": "$ aerospace resize smart +50"
+  },
+
+  // Tab fallback behavior when no layer is active
+  "tab": {
+    "_self": {
+      "description": "Tab fallback if no Omnikey Layer active",
+      "to_if_alone": "tab"
+    }
+  },
+
+  // Device-specific rules for SIGMACHIP USB Keyboard
+  "devices": {
+    "SIGMACHIP USB Keyboard": {
+      "device_if": {
+        "vendor_id": 7247,
+        "product_id": 67
+      },
+
+      // Clipboard shortcuts
+      "keypad_1": "cmd x", // Cut
+      "keypad_2": "cmd c", // Copy
+      "keypad_3": "cmd v", // Paste
+      "keypad_4": "cmd z", // Undo
+      "keypad_5": "cmd a", // Select All
+
+      // Function keys
+      "keypad_plus": "cmd f7", // Increase brightness (example)
+      "keypad_hyphen": "cmd f6", // Decrease brightness (example)
+
+      // Hyper combo trigger for ChatGPT
+      "keypad_period": "rcmd rctrl ropt rshift c",
+
+      // Complex macros (passwords, sequences)
+      "keypad_9": [
+        "shift 1",
+        "shift 1",
+        "shift a",
+        "shift s",
+        "shift p",
+        "shift b",
+        "9",
+        "g",
+        "f",
+        "shift p",
+        "halt vk_none",
+        "return_or_enter"
+      ],
+      "keypad_8": [
+        "shift s",
+        "shift m",
+        "r",
+        "f",
+        "1",
+        "3",
+        "shift 1",
+        "shift 3",
+        "2",
+        "0",
+        "2",
+        "2"
+      ],
+      "keypad_7": [
+        "shift s",
+        "shift m",
+        "r",
+        "f",
+        "1",
+        "3",
+        "shift 1",
+        "shift 3",
+        "shift g",
+        "o",
+        "o",
+        "g",
+        "l",
+        "e"
+      ],
+      "keypad_6": [
+        "s",
+        "m",
+        "r",
+        "f",
+        "1",
+        "3",
+        "shift 1",
+        "shift 3",
+        "2",
+        "0",
+        "2",
+        "2"
+      ]
+    }
   }
 }
